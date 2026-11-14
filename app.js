@@ -486,7 +486,7 @@ function mostrarPc() {
   b.querySelector('b').textContent = !Sync.enabled() ? 'Conectar PC' : on ? (pcStatus.rodando ? `PC desfocando${fila > 1 ? ` (${fila})` : ''}` : 'PC online') : 'PC offline';
   $('#conexao').innerHTML = Sync.enabled()
     ? `✅ Conectado ao Gist ${Sync.config().gistId.slice(0, 8)}… ${on ? '· PC ligado' : '· PC sem sinal (ligue o PC para desfocar)'}`
-    : 'No PC, abra <b>http://localhost:8799</b> e leia o QR code com o botão abaixo.';
+    : 'No PC, abra <b>http://localhost:8803</b> e leia o QR code com o botão abaixo.';
 }
 
 // ---------------------------------------------------------------- celular: QR / link de configuração
