@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f1e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Editor de Fotos</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+  <header class="topo">
+    <h1>Editor de Fotos</h1>
+    <button id="pc" class="pc off" type="button" title="Situação do PC"><i></i><b>PC offline</b></button>
+  </header>
+
+  <section class="fotos">
+    <div id="lista" class="lista"></div>
+    <label class="botao-add">
+      <input id="arquivos" type="file" accept="image/*" multiple hidden>
+      <span>＋</span><small>Fotos</small>
+    </label>
+  </section>
+
+  <section class="blur">
+    <button id="desfocar" class="btn btn-cinza" type="button">🌫 Desfocar no PC</button>
+    <label class="forca">Força <input id="forca" type="number" min="0" max="60" inputmode="numeric"></label>
+  </section>
+  <p id="statusBlur" class="status"></p>
+
+  <section id="editor" class="editor" hidden>
+    <div class="previa-box">
+      <canvas id="previa" class="previa" width="1080" height="1920"></canvas>
+    </div>
+    <p class="dica">Arraste a foto para enquadrar, use dois dedos para o zoom e arraste o texto para subir ou descer.</p>
+
+    <label class="check"><input id="usarDesfocada" type="checkbox"> Usar a foto desfocada</label>
+
+    <div class="campo">
+      <label for="preco">Preço à vista (R$)</label>
+      <input id="preco" type="text" inputmode="decimal" placeholder="Ex.: 3700" autocomplete="off">
+      <span id="parcela" class="parcela"></span>
+    </div>
+
+    <div class="campo">
+      <div class="linha-titulo">
+        <label for="texto">Texto da legenda</label>
+        <button id="textoAuto" class="btn-mini" type="button">↺ Automático</button>
+      </div>
+      <textarea id="texto" rows="5" spellcheck="false"></textarea>
+      <small id="textoAviso" class="aviso"></small>
+    </div>
+
+    <div class="campo">
+      <label for="zoom">Zoom da foto</label>
+      <div class="linha">
+        <input id="zoom" type="range" min="100" max="300" step="1">
+        <button id="centralizar" class="btn-mini" type="button">Centralizar</button>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Posição do texto</label>
+      <div class="linha">
+        <button id="subir" class="btn-mini" type="button">▲ Subir</button>
+        <button id="descer" class="btn-mini" type="button">▼ Descer</button>
+        <button id="textoPadrao" class="btn-mini" type="button">Padrão</button>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Cor da fonte</label>
+      <div id="cores" class="cores">
+        <label class="cor-livre" title="Escolher qualquer cor"><input id="corLivre" type="color"></label>
+      </div>
+    </div>
+
+    <button id="salvarArte" class="btn btn-azul" type="button">💾 Salvar arte</button>
+    <div class="linha acoes">
+      <button id="salvarDesfocada" class="btn btn-cinza" type="button">🌫 Desfocada com logo</button>
+      <button id="remover" class="btn btn-vermelho" type="button">🗑 Remover</button>
+    </div>
+  </section>
+
+  <section id="vazio" class="vazio">
+    <p>Toque em <b>＋ Fotos</b> para escolher as fotos da galeria.</p>
+  </section>
+
+  <details id="ajustes" class="ajustes">
+    <summary>⚙ Conexão com o PC</summary>
+    <p id="conexao"></p>
+    <button id="lerQr" class="btn btn-azul" type="button">📷 Ler QR do PC</button>
+    <div id="leitorQr" class="leitor" hidden>
+      <video id="videoQr" playsinline muted></video>
+      <button id="fecharQr" class="btn btn-cinza" type="button">Cancelar</button>
+    </div>
+    <div class="campo">
+      <label for="linkConfig">Ou cole o link de configuração</label>
+      <input id="linkConfig" placeholder="https://…#config=…" autocomplete="off">
+    </div>
+    <p class="versao">No PC: abra <b>http://localhost:8799</b> para ver o QR code. Versão <span id="versao"></span></p>
+  </details>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="config.js?v=1"></script>
+  <script src="sync.js?v=1"></script>
+  <script src="arte.js?v=1"></script>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
