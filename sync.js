@@ -4,7 +4,7 @@
 // Arquivos no Gist:
 //   pedido-<id>.json     foto enviada pelo celular { nome, forca, foto: base64 JPG }
 //   resultado-<id>.json  foto desfocada pelo PC { nome, foto } ou { erro }
-//   status.json          { pc: horário em ms, rodando, fila } — o PC regrava a cada minuto
+//   status.json          { pc: horário em ms, rodando, fila } — o PC regrava a cada 10 min
 const Sync = (() => {
   const CFG_KEY = 'editorfotos:sync';
   const API = 'https://api.github.com/gists';

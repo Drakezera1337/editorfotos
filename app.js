@@ -3,7 +3,7 @@ const $ = (s) => document.querySelector(s);
 const K = { cor: 'editorfotos:cor', forca: 'editorfotos:forca' };
 const CORES_PRONTAS = [Arte.COR_PADRAO, '#ffffff', '#ffd400', '#ff3b3b', '#22c55e', '#ff4fd8', '#00d4ff'];
 const MAX_ENVIO = 2048; // lado maior da foto enviada ao PC (a arte usa 960x1280)
-const PC_ONLINE_MS = 3 * 60 * 1000;
+const PC_ONLINE_MS = 25 * 60 * 1000; // o PC regrava o status a cada 10 min (freio de gravação do GitHub)
 
 let itens = [];
 let atual = null;

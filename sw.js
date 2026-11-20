@@ -1,5 +1,5 @@
 // Editor de Fotos: cache para abrir rápido e funcionar sem internet (o blur precisa de internet e do PC).
-const CACHE = 'editorfotos-v1';
+const CACHE = 'editorfotos-v2';
 const ASSETS = ['./', 'index.html', 'styles.css', 'app.js', 'arte.js', 'sync.js', 'config.js', 'manifest.webmanifest',
   'icon-192.png', 'recursos/fundo.jpg', 'recursos/logo.png', 'recursos/chamada.png', 'recursos/Montserrat-BlackItalic.otf'];
 
